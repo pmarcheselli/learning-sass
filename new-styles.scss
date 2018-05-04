@@ -1,39 +1,68 @@
+$default-margin: 1rem auto;
+$accent: #3A612D;
+$highlight: pink;
+$brand: #2D5461;
+
+@mixin highlighted {
+  background-color: $highlight;
+  padding: 1rem;
+}
+
+@mixin bordered($color){
+  border: 3px solid $color;
+  margin: 1rem;
+}
+
 body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: #2D5461;
+  color: $brand;
   font-family: Helvetica, "Trebuchet MS", Verdana, sans-serif;;
 }
 
 .cta-container {
-  margin: 1rem auto;
+  margin: $default-margin;
   padding: 0 1rem;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
   align-items: center;
+  @include bordered(green);
 }
 
-.cta a, .cta a:visited, .cta a:hover, .cta a:focus {
-  text-decoration: none;
-  color: black; 
+.cta {
+  text-align: center;
+  display: flex;
+  flex-flow: column nowrap;
+  padding: 1rem;
+  justify-content: center;
+  align-items: space-around;
+  box-shadow: gray 3px 3px 8px;
+  background-color: #C0FABE;
+  margin: 1rem;
+  img {
+    max-width: 300px;
+  }
+  a, a:visited, a:hover, a:focus {
+    color: $brand;
+    text-decoration: none; 
+  } 
 }
 
 a.fancy-link {
-  color: #3A612D; 
-}
-
-a.fancy-link:visited {
-  color: #D2F0FA; 
-}
-
-a.fancy-link:hover, a.fancy-link:focus {
-  text-shadow: gray 3px, 3px, 8px; 
+  color: $accent;
+  &:visited {
+    color: $highlight;
+  }
+  &:hover, &:focus {
+    text-shadow: gray 3px 3px 8px;
+  }
 }
 
 section:first-of-type h2 {
-  font-weight: 900;
+/*  font-weight: bold;*/
+  font-weight: bolder;
   text-align: center;
 }
 
@@ -68,7 +97,10 @@ input[type="submit"] {
   max-width: 300px;
 }
 
+.highlighted {
+  @include highlighted;
+}
+
 footer {
-  background-color: #D2F0FA;
-  padding: 1rem;
+  @include highlighted;
 }
